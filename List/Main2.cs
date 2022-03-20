@@ -1,5 +1,4 @@
-﻿using List.LinkedList;
-//using List.ArrayList;
+﻿//using List.ArrayList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +10,17 @@ namespace List.list.ArrayList
 {
     internal class Main2
     {
-        public static void Main(string[] args)
+        public static void Main(String[] args)
         {
-            ArrayList team1 = new ArrayList();
-            ArrayList team2 = new ArrayList();
-            ArrayList team3 = new ArrayList();
+            Console.WriteLine("ArrayList: \n");
+            metodo(new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>());
+            Console.WriteLine("***********************************");
+            Console.WriteLine("LinkedList: \n");
+            metodo(new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>());
+        }
+
+        public static void metodo(List<String> team1, List<String> team2, List<String> team3)
+        {
 
             team1.addAtTail("Daniel");
             team1.addAtTail("Rodrigo");
@@ -27,7 +32,7 @@ namespace List.list.ArrayList
 
             team3.addAtFront("Huizar");
 
-            ArrayListIterator iterator;
+            Iterator<String> iterator;
 
             iterator = team1.getIterator();
 

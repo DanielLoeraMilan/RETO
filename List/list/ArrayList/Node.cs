@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace List.LinkedList
+namespace List.list.ArrayList
 {
-    class Node
+    internal class Node <T>
     {
-        public string data;
-        public Node next;
-        public Node previous;
+        internal T data;
+        internal Node <T> next;
+        internal Node <T> previous;
 
-        public Node(string data)
+        internal Node(T data)
         {
             this.data = data;
         }

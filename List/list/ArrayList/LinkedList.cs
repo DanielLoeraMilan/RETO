@@ -4,22 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace List.LinkedList
+namespace List.list.ArrayList
 {
-    class LinkedList
+    class LinkedList <T> : List <T>
     {
-        private Node? head;
-        private Node? tail;
+        private Node<T> head;
+        private Node<T> tail;
         private int size;
 
-        public Node GetTail()
+        public void addAtTail(T data)
         {
-            return tail;
-        }
-
-        public void addAtTail(String data)
-        {
-            Node node = new Node(data);
+            Node<T> node = new Node<T>(data);
 
             if (size == 0)
             {
@@ -35,9 +30,9 @@ namespace List.LinkedList
             size++;
         }
 
-        public void addAtFront(string data)
+        public void addAtFront(T data)
         {
-            Node node = new Node(data);
+            Node<T> node = new Node<T>(data);
 
             if (size == 0)
             {
@@ -55,7 +50,7 @@ namespace List.LinkedList
 
         public void remove(int index)
         {
-            Node node = findNode(index);
+            Node<T> node = findNode(index);
 
             if (node == null)
             {
@@ -100,9 +95,9 @@ namespace List.LinkedList
             //System.gc();
         }
 
-        public void setAt(int index, string data)
+        public void setAt(int index, T data)
         {
-            Node node = findNode(index);
+            Node<T> node = findNode(index);
             //int currentIndex = 0;
 
             if (node != null)
@@ -111,11 +106,11 @@ namespace List.LinkedList
             }
         }
 
-        public string getAt(int index)
+        public T getAt(int index)
         {
-            Node node = findNode(index);
+            Node<T> node = findNode(index);
 
-            return node == null ? null : node.data;
+            return node == null ? default(T) : node.data;
         }
 
         public int getSize()
@@ -123,19 +118,19 @@ namespace List.LinkedList
             return size;
         }
 
-        public LinkedListIterator getIterator()
+        public Iterator<T> getIterator()
         {
-            return new LinkedListIterator(head);
+            return new LinkedListIterator<T>(head);
         }
 
-        private Node findNode(int index)
+        private Node<T> findNode(int index)
         {
             if (index < 0 || index >= size)
             {
                 return null;
             }
 
-            Node node = head;
+            Node<T> node = head;
             int currentIndex = 0;
 
             while (currentIndex != index)

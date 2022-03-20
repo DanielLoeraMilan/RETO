@@ -4,25 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace List.LinkedList
+namespace List.list.ArrayList
 {
-    internal class LinkedListIterator
+    internal class LinkedListIterator <T> : Iterator <T>
     {
-        private Node currentNode;
+        private Node<T> currentNode;
 
-        public LinkedListIterator(Node startNode)
+        internal LinkedListIterator(Node <T> startNode)
         {
             currentNode = startNode;
         }
 
-        public bool hasNext()
+        public Boolean hasNext()
         {
             return currentNode != null;
         }
 
-        public string next()
+        public T next()
         {
-            string data = currentNode.data;
+            T data = currentNode.data;
 
             currentNode = currentNode.next;
 

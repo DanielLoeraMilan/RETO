@@ -6,24 +6,29 @@ using System.Threading.Tasks;
 
 namespace List.list.ArrayList
 {
-    internal class ArrayList
+    internal class ArrayList <T> : List<T>
     {
-        private static int DEFAULT_SIZE = 2;
-        private String[] array;
+        private const int DEFAULT_SIZE = 2;
+        private T[] array;
         private int size;
+
+        public static String getName()
+        {
+            return "ArrayList";
+        }
 
         public ArrayList()
         {
-            array = new String[DEFAULT_SIZE];
+            array = (T[])new T[DEFAULT_SIZE];
 
         }
 
         public ArrayList(int size)
         {
-            array = new String[size];
+            array = (T[])new T[size];
         }
 
-        public void addAtTail(String data)
+        public void addAtTail(T data)
         {
             if (size == array.Length)
             {
@@ -34,7 +39,7 @@ namespace List.list.ArrayList
             size++;
         }
 
-        public void addAtFront(String data)
+        public void addAtFront(T data)
         {
             if (size == array.Length)
             {
@@ -54,7 +59,7 @@ namespace List.list.ArrayList
             }
 
             if (size - 1 - index >= 0) Array.Copy(array, index + 1, array, index, size - 1 - index);
-            array[size - 1] = null;
+            array[size - 1] = default(T);
             size--;
         }
 
@@ -62,12 +67,12 @@ namespace List.list.ArrayList
         {
             for (int i = 0; i < size; i++)
             {
-                array[i] = null;
+                array[i] = default(T);
             }
             size = 0;
         }
 
-        public void setAt(int index, String data)
+        public void setAt(int index, T data)
         {
             if (index >= 0 && index < size)
             {
@@ -75,9 +80,9 @@ namespace List.list.ArrayList
             }
         }
 
-        public String getAt(int index)
+        public T getAt(int index)
         {
-            return index >= 0 && index < size ? array[index] : null;
+            return index >= 0 && index < size ? array[index] : default(T);
         }
 
         public int getSize()
@@ -85,14 +90,14 @@ namespace List.list.ArrayList
             return size;
         }
 
-        public ArrayListIterator getIterator()
+        public Iterator<T> getIterator()
         {
-            return new ArrayListIterator(this);
+            return new ArrayListIterator<T>(this);
         }
 
         private void increaseArraySize()
         {
-            String[] newArray = new String[array.Length * 2];
+            T[] newArray = (T[])new T[array.Length * 2];
 
             for (int i = 0; i < size; i++)
             {
